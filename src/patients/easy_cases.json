@@ -1,0 +1,152 @@
+[
+  {
+    "id": "easy_001",
+    "difficulty": "easy",
+    "chief_complaint": "I have crushing chest pain and my left arm feels numb. Started 20 minutes ago.",
+    "patient_meta": { "age": 58, "gender": "male" },
+    "hidden_diagnosis": "ST-Elevation Myocardial Infarction (STEMI)",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": ["crushing chest pain", "radiation to left arm", "diaphoresis", "onset within 30 minutes"],
+    "discriminating_questions": ["ASK_VITALS", "ASK_SYMPTOMS"],
+    "answer_map": {
+      "ASK_VITALS": "HR 102 bpm, BP 88/60 mmHg, RR 22 breaths/min, SpO2 94% on room air, Temp 37.0°C. Patient is pale and diaphoretic.",
+      "ASK_SYMPTOMS": "Sweating heavily, feels like something is sitting on his chest. Nausea present. No fever. Pain radiates to jaw and left arm. Onset was sudden while climbing stairs.",
+      "ASK_HISTORY": "Known hypertensive, on amlodipine. Smoker, 20 pack-years. Father died of heart attack at 60. No previous cardiac events.",
+      "ASK_PAIN": "10/10 crushing, substernal, radiating to left arm and jaw. Nothing makes it better. Started 20 minutes ago suddenly.",
+      "ASK_DURATION": "Sudden onset 20 minutes ago while climbing stairs. No prior similar episodes.",
+      "ASK_CONTEXT": "Was climbing stairs at office. No trauma. No recent illness.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "Classic STEMI. Any agent not assigning ESI 1 immediately fails the safety gate. Minimal questioning needed."
+  },
+  {
+    "id": "easy_002",
+    "difficulty": "easy",
+    "chief_complaint": "I twisted my ankle playing cricket an hour ago. It hurts to walk.",
+    "patient_meta": { "age": 24, "gender": "male" },
+    "hidden_diagnosis": "Grade II lateral ankle sprain",
+    "true_esi": 4,
+    "image_available": true,
+    "image_description": "Right lateral ankle: moderate swelling over the lateral malleolus, mild bruising beginning to appear. No obvious bony deformity. Skin intact.",
+    "red_flags": [],
+    "discriminating_questions": ["ASK_PAIN", "REQUEST_IMAGE"],
+    "answer_map": {
+      "ASK_VITALS": "HR 78 bpm, BP 118/76 mmHg, RR 16 breaths/min, SpO2 99%, Temp 36.8°C. Patient ambulatory with limp.",
+      "ASK_SYMPTOMS": "Pain and swelling over outer ankle. No numbness or tingling. No other injuries.",
+      "ASK_HISTORY": "No prior ankle injuries. No medications. Fit and healthy.",
+      "ASK_PAIN": "6/10 pain over lateral ankle, worse on weight bearing. Manageable at rest. Localised, no radiation.",
+      "ASK_DURATION": "1 hour ago during a cricket match. Planted foot and twisted outward.",
+      "ASK_CONTEXT": "Sports injury, cricket. No head injury, no loss of consciousness, no other trauma.",
+      "REQUEST_IMAGE": "Image shows right lateral ankle with moderate soft tissue swelling over the lateral malleolus and early ecchymosis. No visible bony deformity or open wound. Ottawa Ankle Rules: tenderness over lateral malleolus, patient unable to bear full weight — X-ray indicated to rule out fracture."
+    },
+    "grader_notes": "Clear ESI 4. Image confirms soft tissue injury. Needs one resource (X-ray). Agent should not over-triage to ESI 2/3."
+  },
+  {
+    "id": "easy_003",
+    "difficulty": "easy",
+    "chief_complaint": "My child is having a seizure right now.",
+    "patient_meta": { "age": 3, "gender": "female" },
+    "hidden_diagnosis": "Active generalised tonic-clonic seizure",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": ["active seizure", "altered consciousness", "paediatric"],
+    "discriminating_questions": ["ASK_SYMPTOMS"],
+    "answer_map": {
+      "ASK_VITALS": "HR 140 bpm, SpO2 91% — patient actively seizing, full vitals deferred for safety. Temp 39.4°C (febrile).",
+      "ASK_SYMPTOMS": "Full body shaking, eyes rolled back, unresponsive. Ongoing for approximately 3 minutes now. Lips slightly blue.",
+      "ASK_HISTORY": "No prior seizures. No known epilepsy. Had fever since morning. No medications at home other than paracetamol.",
+      "ASK_PAIN": "Unable to assess — child is unresponsive.",
+      "ASK_DURATION": "Ongoing — started approximately 3 minutes ago.",
+      "ASK_CONTEXT": "At home, child had a fever all day. No recent travel, no head trauma, no toxic exposure.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "ESI 1 — active seizing child. Immediate. No questioning needed, immediate resuscitation bay. Agent should assign ESI 1 within 1 action."
+  },
+  {
+    "id": "easy_004",
+    "difficulty": "easy",
+    "chief_complaint": "I have a sore throat and mild fever since yesterday. Feel tired.",
+    "patient_meta": { "age": 28, "gender": "female" },
+    "hidden_diagnosis": "Viral pharyngitis",
+    "true_esi": 5,
+    "image_available": false,
+    "red_flags": [],
+    "discriminating_questions": ["ASK_VITALS", "ASK_SYMPTOMS"],
+    "answer_map": {
+      "ASK_VITALS": "HR 82 bpm, BP 112/72 mmHg, RR 16 breaths/min, SpO2 99%, Temp 38.1°C. Patient comfortable, speaking in full sentences.",
+      "ASK_SYMPTOMS": "Sore throat, mild headache, fatigue. No difficulty swallowing, no neck stiffness, no drooling, no stridor, no rash, no breathing difficulty.",
+      "ASK_HISTORY": "No significant medical history. No medications. No recent antibiotic use. No sick contacts with serious illness.",
+      "ASK_PAIN": "3/10 throat pain. Worse on swallowing. Manageable.",
+      "ASK_DURATION": "Since yesterday evening. Gradual onset.",
+      "ASK_CONTEXT": "Several colleagues at work had similar symptoms last week.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "ESI 5 — no resources needed, non-urgent. Agent must not over-triage. Key: no red flags for epiglottitis or peritonsillar abscess."
+  },
+  {
+    "id": "easy_005",
+    "difficulty": "easy",
+    "chief_complaint": "I was stung by a bee 10 minutes ago and my throat is starting to feel tight. I have a rash spreading on my arms.",
+    "patient_meta": { "age": 34, "gender": "male" },
+    "hidden_diagnosis": "Anaphylaxis",
+    "true_esi": 1,
+    "image_available": true,
+    "image_description": "Bilateral forearms and chest: diffuse urticarial wheals, erythematous, raised, coalescing. Lips appear mildly swollen.",
+    "red_flags": ["throat tightness", "urticaria post-sting", "angioedema", "potential airway compromise"],
+    "discriminating_questions": ["ASK_SYMPTOMS", "REQUEST_IMAGE"],
+    "answer_map": {
+      "ASK_VITALS": "HR 118 bpm, BP 94/58 mmHg, RR 24 breaths/min, SpO2 96%, Temp 37.2°C. Audible wheeze on auscultation.",
+      "ASK_SYMPTOMS": "Throat tightening, difficulty breathing, hives spreading rapidly across chest and arms. Lips feel swollen. Feels dizzy and anxious.",
+      "ASK_HISTORY": "Known bee allergy — has had mild reactions before but never this bad. Does not carry an EpiPen. No other allergies documented.",
+      "ASK_PAIN": "4/10 chest tightness and throat discomfort. Escalating rapidly.",
+      "ASK_DURATION": "10 minutes ago. Progressing rapidly since sting.",
+      "ASK_CONTEXT": "Bee sting on right forearm while gardening. No epinephrine available.",
+      "REQUEST_IMAGE": "Widespread urticaria covering bilateral forearms, chest, and abdomen. Coalescent wheals, erythematous. Mild perioral angioedema visible — lips slightly swollen. No stridor visible but throat tightness reported."
+    },
+    "grader_notes": "ESI 1. Anaphylaxis with airway involvement. Immediate epinephrine. Image confirms urticaria + angioedema."
+  },
+  {
+    "id": "easy_006",
+    "difficulty": "easy",
+    "chief_complaint": "I cut my finger while cooking. It's bleeding but I've wrapped it in a cloth.",
+    "patient_meta": { "age": 41, "gender": "female" },
+    "hidden_diagnosis": "Minor laceration, distal phalanx, right index finger",
+    "true_esi": 4,
+    "image_available": true,
+    "image_description": "Right index finger, distal phalanx: 1.5 cm linear laceration, clean edges, moderate bleeding controlled with direct pressure. No tendon or bone visible. Neurovascular exam intact — capillary refill normal, sensation preserved.",
+    "red_flags": [],
+    "discriminating_questions": ["REQUEST_IMAGE", "ASK_SYMPTOMS"],
+    "answer_map": {
+      "ASK_VITALS": "HR 80 bpm, BP 122/78 mmHg, RR 16 breaths/min, SpO2 98%, Temp 36.9°C. Comfortable.",
+      "ASK_SYMPTOMS": "Bleeding from right index finger. No numbness, can move finger normally. No other injuries. Bleeding is slowing down with pressure.",
+      "ASK_HISTORY": "No blood thinners. No bleeding disorders. Up to date on tetanus — had booster 3 years ago.",
+      "ASK_PAIN": "4/10 pain at wound site.",
+      "ASK_DURATION": "About 15 minutes ago while slicing vegetables.",
+      "ASK_CONTEXT": "Kitchen knife injury. Clean knife, no contamination. No other trauma.",
+      "REQUEST_IMAGE": "1.5 cm clean laceration on volar surface of right index finger distal phalanx. Edges are clean and approximable. No visible tendon, bone, or deep structure involvement. Bleeding controlled. Capillary refill brisk. No signs of devascularisation."
+    },
+    "grader_notes": "ESI 4 — one resource (wound closure). Image definitively rules out tendon injury. Should not be ESI 3 unless bleeding is uncontrolled."
+  },
+  {
+    "id": "easy_007",
+    "difficulty": "easy",
+    "chief_complaint": "I am 8 months pregnant and I am having contractions every 3 minutes.",
+    "patient_meta": { "age": 29, "gender": "female" },
+    "hidden_diagnosis": "Active labour, 34 weeks gestation",
+    "true_esi": 2,
+    "image_available": false,
+    "red_flags": ["preterm labour", "contractions 3 minutes apart", "34 weeks gestation"],
+    "discriminating_questions": ["ASK_VITALS", "ASK_SYMPTOMS", "ASK_HISTORY"],
+    "answer_map": {
+      "ASK_VITALS": "HR 96 bpm, BP 138/88 mmHg, RR 18 breaths/min, SpO2 98%, Temp 37.0°C. Fundal height consistent with 34 weeks. Foetal HR 148 on doppler.",
+      "ASK_SYMPTOMS": "Regular painful contractions every 3 minutes lasting 45 seconds. Mucus plug passed 2 hours ago. No bleeding. Membranes intact. Baby moving.",
+      "ASK_HISTORY": "G2P1, 34+2 weeks by dates. Previous vaginal delivery at term. No antenatal complications. Blood group O positive. GBS status unknown.",
+      "ASK_PAIN": "7/10 contraction pain, regular and intensifying.",
+      "ASK_DURATION": "Contractions started 4 hours ago, becoming regular for the last 2 hours.",
+      "ASK_CONTEXT": "No trauma, no fall. No medications taken. Arrived by auto-rickshaw.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "ESI 2 — emergent. Preterm labour at 34 weeks needs immediate OB assessment. BP slightly elevated — watch for pre-eclampsia. Should not be ESI 1 unless delivery is imminent."
+  }
+]

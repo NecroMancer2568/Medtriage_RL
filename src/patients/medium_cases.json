@@ -1,0 +1,160 @@
+[
+  {
+    "id": "medium_001",
+    "difficulty": "medium",
+    "chief_complaint": "I have a really bad headache. Worst I've ever had. Started about an hour ago.",
+    "patient_meta": { "age": 45, "gender": "female" },
+    "hidden_diagnosis": "Subarachnoid haemorrhage",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": ["thunderclap headache", "worst headache of life", "sudden onset"],
+    "discriminating_questions": ["ASK_PAIN", "ASK_SYMPTOMS", "ASK_DURATION"],
+    "fork_condition": "If agent asks ASK_PAIN or ASK_DURATION and identifies thunderclap onset — must escalate to ESI 1. If agent assumes migraine without probing — undertriage to ESI 3.",
+    "answer_map": {
+      "ASK_VITALS": "HR 88 bpm, BP 172/98 mmHg, RR 18 breaths/min, SpO2 98%, Temp 37.1°C. Patient holding head, photophobic.",
+      "ASK_SYMPTOMS": "Severe photophobia, neck stiffness beginning, nausea and one episode of vomiting. No fever. No focal weakness or speech difficulty. Vision slightly blurred.",
+      "ASK_HISTORY": "Occasional migraines in the past — but patient insists this is completely different. No anticoagulants. No family history of aneurysms known. Smoker.",
+      "ASK_PAIN": "10/10. Sudden onset — like a thunderclap. She says she has never felt anything like this. Previous migraines were 6/10 and built up gradually. This was instant maximum pain.",
+      "ASK_DURATION": "Began exactly 1 hour ago. Sudden, instantaneous onset. Patient was sitting at her desk when it hit.",
+      "ASK_CONTEXT": "At work at her desk. No trauma, no exertion at onset. No similar episodes before.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "The fork: migraineur with worst-ever headache. Agent must ask about onset character (thunderclap vs gradual) to distinguish SAH from migraine. Asking ASK_PAIN or ASK_DURATION unlocks the thunderclap descriptor. ESI 1 if identified correctly, ESI 3 if anchored on migraine history."
+  },
+  {
+    "id": "medium_002",
+    "difficulty": "medium",
+    "chief_complaint": "I have a wound on my leg from a dog bite yesterday. It's looking red now.",
+    "patient_meta": { "age": 52, "gender": "male" },
+    "hidden_diagnosis": "Infected dog bite wound with early cellulitis — risk of rabies exposure",
+    "true_esi": 2,
+    "image_available": true,
+    "image_description": "Right calf: 2 puncture wounds 8mm deep, 3cm apart. Surrounding erythema 4cm in diameter, warm to touch, mild oedema. No tracking lymphangitis visible yet. No abscess or necrosis. Wound edges open, not sutured.",
+    "red_flags": ["animal bite with infection", "rabies risk — stray dog", "puncture wound not cleaned"],
+    "discriminating_questions": ["ASK_CONTEXT", "ASK_SYMPTOMS", "REQUEST_IMAGE"],
+    "fork_condition": "If agent asks ASK_CONTEXT and discovers it was a stray dog — rabies PEP urgency escalates to ESI 2. If agent assumes pet dog — may incorrectly score ESI 3.",
+    "answer_map": {
+      "ASK_VITALS": "HR 84 bpm, BP 128/82 mmHg, RR 17 breaths/min, SpO2 98%, Temp 38.3°C. Patient walking, mild discomfort.",
+      "ASK_SYMPTOMS": "Redness and warmth spreading around the bite. Slight pus at one puncture site. Mild throbbing pain. No systemic symptoms beyond low-grade fever.",
+      "ASK_HISTORY": "Type 2 diabetic on metformin — immunocompromised risk. Last tetanus 8 years ago — booster needed. Not on any blood thinners.",
+      "ASK_PAIN": "4/10 throbbing pain at wound. Manageable.",
+      "ASK_DURATION": "Bite yesterday evening. Did not seek care immediately. Cleaned with water at home, no antiseptic.",
+      "ASK_CONTEXT": "Unprovoked bite from a stray dog in a street market. Dog ran away — whereabouts unknown. Cannot confirm vaccination status of dog. Area has known rabies cases.",
+      "REQUEST_IMAGE": "Right calf: 2 deep puncture wounds, erythema 4cm diameter, early cellulitis. No lymphangitis, no abscess, no crepitus suggesting gas gangrene. Wound edges not closed — open puncture. Signs of early local infection. Diabetic patient — high risk for rapid progression."
+    },
+    "grader_notes": "The fork: dog bite with infection. Stray dog + unknown vaccination + India rabies-endemic = ESI 2 (rabies PEP within 24-48h is time-sensitive). Pet dog + vaccinated = ESI 3. Agent must ask ASK_CONTEXT to make this distinction. Image adds infection severity data."
+  },
+  {
+    "id": "medium_003",
+    "difficulty": "medium",
+    "chief_complaint": "My 6-year-old has had a fever of 39.5 for two days and now has a rash on his body.",
+    "patient_meta": { "age": 6, "gender": "male" },
+    "hidden_diagnosis": "Meningococcal disease with purpuric rash — or viral exanthem (fork on rash character)",
+    "true_esi": 1,
+    "image_available": true,
+    "image_description": "Trunk and bilateral lower limbs: non-blanching petechiae and purpura, 1-3mm, scattered but confluent in areas. Dark red to purple, flat. Positive glass test — rash does not blanch under pressure.",
+    "red_flags": ["non-blanching rash", "petechiae", "purpura", "febrile child"],
+    "discriminating_questions": ["REQUEST_IMAGE", "ASK_SYMPTOMS"],
+    "fork_condition": "If agent asks REQUEST_IMAGE or ASK_SYMPTOMS about rash character — discovers non-blanching → ESI 1 (meningococcal emergency). If agent assumes viral rash without checking blanching — dangerous undertriage.",
+    "answer_map": {
+      "ASK_VITALS": "HR 138 bpm, BP 88/54 mmHg, RR 28 breaths/min, SpO2 96%, Temp 39.8°C. Child appears unwell, mottled skin, sluggish.",
+      "ASK_SYMPTOMS": "Rash appeared this morning. Child is increasingly drowsy and irritable. Neck stiffness on examination. Photophobic. Rash is spreading. Did not blanch when pressed with a glass.",
+      "ASK_HISTORY": "No prior illness. Vaccinations up to date including meningococcal B — but not serotype C. No sick contacts identified.",
+      "ASK_PAIN": "Child complaining of headache and says his neck hurts.",
+      "ASK_DURATION": "Fever for 48 hours. Rash appeared in last 6 hours and is spreading.",
+      "ASK_CONTEXT": "At school yesterday. No travel. No known contact with meningitis.",
+      "REQUEST_IMAGE": "Non-blanching petechiae and purpura visible on trunk, buttocks, and bilateral legs. Glass test positive — rash does NOT blanch under pressure. Lesions are 1–4mm, dark red-purple, some coalescing into larger purpuric patches. This is meningococcal septicaemia until proven otherwise. Immediate IV access and antibiotics required."
+    },
+    "grader_notes": "The fork is the rash character. Non-blanching = meningococcal emergency, ESI 1. Blanching maculopapular = viral exanthem, ESI 3. Agent must either request image or specifically ask about blanching. Image is the single most important diagnostic tool here."
+  },
+  {
+    "id": "medium_004",
+    "difficulty": "medium",
+    "chief_complaint": "I've had pain in my lower right abdomen since last night. It's getting worse.",
+    "patient_meta": { "age": 22, "gender": "female" },
+    "hidden_diagnosis": "Ruptured ectopic pregnancy (not appendicitis, as it superficially appears)",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": ["reproductive age female", "RIF pain", "haemodynamic instability if asked"],
+    "discriminating_questions": ["ASK_HISTORY", "ASK_VITALS", "ASK_CONTEXT"],
+    "fork_condition": "If agent asks only about pain and duration — may assume appendicitis (ESI 2). If agent asks ASK_HISTORY and ASK_CONTEXT — discovers missed period and sexual history → ectopic → ESI 1 with surgical emergency.",
+    "answer_map": {
+      "ASK_VITALS": "HR 118 bpm, BP 92/58 mmHg, RR 22 breaths/min, SpO2 97%, Temp 37.3°C. Patient pale, clammy, in pain. Significant drop in BP from triage position.",
+      "ASK_SYMPTOMS": "Sharp pain right lower abdomen, now spreading to shoulder tip (referred diaphragmatic pain — haemoperitoneum). Dizziness on standing. No fever. Vaginal spotting this morning.",
+      "ASK_HISTORY": "LMP was 7 weeks ago — missed period. Sexually active, not using contraception. Previous PID treated last year. Fallopian tube may be abnormal.",
+      "ASK_PAIN": "8/10, sharp, constant, started right lower quadrant but now more diffuse. Shoulder tip pain developed in the last 2 hours.",
+      "ASK_DURATION": "Started last night, steadily worsening. Shoulder pain is new — last 2 hours.",
+      "ASK_CONTEXT": "Sexually active. Partner confirmed. Unprotected intercourse. LMP 7 weeks ago. Mild vaginal spotting noticed this morning.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "Classic ectopic masquerading as appendicitis. The fork: agent must ask reproductive history (ASK_HISTORY) or context (ASK_CONTEXT) to find the 7-week missed period and PID history. Vitals reveal haemodynamic compromise. Shoulder tip pain = haemoperitoneum. ESI 1 if correctly identified, ESI 2 if assumed appendicitis."
+  },
+  {
+    "id": "medium_005",
+    "difficulty": "medium",
+    "chief_complaint": "I feel short of breath and my leg has been swollen for 3 days. I just flew back from London.",
+    "patient_meta": { "age": 67, "gender": "male" },
+    "hidden_diagnosis": "Pulmonary embolism secondary to DVT",
+    "true_esi": 1,
+    "image_available": true,
+    "image_description": "Left calf and lower leg: visible oedema with pitting on pressure, erythema along medial aspect, prominent superficial veins, skin warm to touch. Homan's sign positive. No ulceration.",
+    "red_flags": ["sudden dyspnoea", "recent long-haul flight", "unilateral leg swelling", "DVT signs"],
+    "discriminating_questions": ["ASK_CONTEXT", "ASK_SYMPTOMS", "REQUEST_IMAGE"],
+    "fork_condition": "Agent must connect leg swelling + flight history + breathlessness as PE triad. If agent treats as simple heart failure or respiratory infection without the flight history — dangerous undertriage.",
+    "answer_map": {
+      "ASK_VITALS": "HR 112 bpm, BP 104/68 mmHg, RR 26 breaths/min, SpO2 91% on room air, Temp 37.4°C. Trachea central. Unilateral left leg swelling confirmed.",
+      "ASK_SYMPTOMS": "Progressive shortness of breath over 2 days since landing. Left leg red, warm, swollen. Mild pleuritic chest pain — sharp on deep breath. No cough or fever. No calf trauma.",
+      "ASK_HISTORY": "Hypertensive, on ramipril. No prior clots. Obese (BMI 34). No anticoagulants. Previous abdominal surgery 6 months ago.",
+      "ASK_PAIN": "5/10 pleuritic chest pain — worsens on deep inspiration. Left calf aching 4/10.",
+      "ASK_DURATION": "Leg swelling noticed 3 days ago on the flight. Breathlessness began day after landing. Worsening today.",
+      "ASK_CONTEXT": "14-hour flight from London. Long-haul passenger, economy class, limited mobility. Flew home 2 days ago.",
+      "REQUEST_IMAGE": "Left lower leg: significant pitting oedema to mid-calf, erythema tracking along medial aspect consistent with DVT distribution. Superficial veins distended. Skin warm. No breakdown or ulceration. Right leg normal by comparison. Wells score clinically high for DVT."
+    },
+    "grader_notes": "PE triad: recent long-haul flight + unilateral DVT + sudden dyspnoea. Wells score very high. SpO2 91% — haemodynamically compromised. ESI 1. Agent must ask ASK_CONTEXT to get flight history, or it might anchor on cardiac/respiratory."
+  },
+  {
+    "id": "medium_006",
+    "difficulty": "medium",
+    "chief_complaint": "I've been having upper stomach pain after eating for the last week. Today it's much worse and going to my back.",
+    "patient_meta": { "age": 55, "gender": "male" },
+    "hidden_diagnosis": "Acute pancreatitis (severe) — background of alcohol use",
+    "true_esi": 2,
+    "image_available": false,
+    "red_flags": ["epigastric pain radiating to back", "alcohol history if asked", "haemodynamic instability"],
+    "discriminating_questions": ["ASK_PAIN", "ASK_CONTEXT", "ASK_VITALS"],
+    "fork_condition": "If agent asks only about symptoms — may assume GORD (ESI 4). If agent asks about pain radiation and alcohol use — identifies pancreatitis → ESI 2.",
+    "answer_map": {
+      "ASK_VITALS": "HR 106 bpm, BP 102/66 mmHg, RR 20 breaths/min, SpO2 97%, Temp 38.2°C. Uncomfortable, cannot find a comfortable position.",
+      "ASK_SYMPTOMS": "Severe epigastric pain, nausea, 4 episodes of vomiting. No relief from vomiting. Pain is constant, not colicky. No diarrhoea. Abdomen rigid on palpation.",
+      "ASK_HISTORY": "History of heavy alcohol use — drinks daily, about 8-10 units per day. One prior episode of pancreatitis 2 years ago. On no regular medications. Known gallstones on previous ultrasound, untreated.",
+      "ASK_PAIN": "9/10 epigastric pain, constant, boring through to the back like a band. Worse lying flat, slightly better leaning forward. Nothing brings relief.",
+      "ASK_DURATION": "Dull ache for a week after meals. Today — sudden severe pain 3 hours ago after a large meal with alcohol.",
+      "ASK_CONTEXT": "Heavy drinker. Had a large meal with significant alcohol consumption tonight. Known gallstones.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "Fork: epigastric pain could be GORD (ESI 4), peptic ulcer (ESI 3), or pancreatitis (ESI 2). Radiation to back + alcohol history + prior episode + vitals instability = pancreatitis. Agent must probe character of pain and social history."
+  },
+  {
+    "id": "medium_007",
+    "difficulty": "medium",
+    "chief_complaint": "I have pain and redness in my eye since this morning. It's very sensitive to light.",
+    "patient_meta": { "age": 38, "gender": "female" },
+    "hidden_diagnosis": "Acute angle-closure glaucoma",
+    "true_esi": 2,
+    "image_available": true,
+    "image_description": "Right eye: injected (red) sclera with circumcorneal flush, cornea appears hazy/steamy, mid-dilated fixed pupil approximately 5mm. Marked conjunctival injection. Eyelid oedema present. Left eye appears normal.",
+    "red_flags": ["fixed mid-dilated pupil", "hazy cornea", "circumcorneal flush", "severe eye pain with nausea"],
+    "discriminating_questions": ["ASK_SYMPTOMS", "REQUEST_IMAGE"],
+    "fork_condition": "Agent may assume conjunctivitis (ESI 4) or uveitis (ESI 3). Image reveals fixed mid-dilated pupil and hazy cornea — hallmarks of angle-closure glaucoma. ESI 2 — ophthalmology emergency within 1 hour.",
+    "answer_map": {
+      "ASK_VITALS": "HR 92 bpm, BP 148/90 mmHg, RR 17 breaths/min, SpO2 99%, Temp 37.0°C. Patient in distress, holding eye.",
+      "ASK_SYMPTOMS": "Severe right eye pain, halos around lights, severely blurred vision in that eye, nausea and vomiting. The eye feels hard to touch. Headache on the right side.",
+      "ASK_HISTORY": "Hypermetropic (long-sighted), uses reading glasses. No prior eye problems. No glaucoma diagnosed. Was in a dark cinema when pain started suddenly.",
+      "ASK_PAIN": "9/10 right eye pain, with ipsilateral headache. Sudden onset. Nausea associated.",
+      "ASK_DURATION": "Started suddenly 4 hours ago in a dark cinema. Worsening progressively since.",
+      "ASK_CONTEXT": "Was in a darkened cinema — pupil dilation in dark triggered attack. Long-sighted — narrow anterior chamber angle risk.",
+      "REQUEST_IMAGE": "Right eye: circumcorneal ciliary flush (limbal injection), hazy oedematous cornea, mid-dilated irregular pupil approximately 5mm — not reactive to light. Conjunctival chemosis present. Eye appears firm on palpation. Left eye: normal pupil, clear cornea. Findings consistent with acute angle-closure glaucoma — ophthalmologic emergency."
+    },
+    "grader_notes": "Classic angle-closure glaucoma triggered by pupil dilation in dark cinema. Image is diagnostic — fixed mid-dilated pupil + hazy cornea. Agent must distinguish from conjunctivitis (no pupil change, no corneal haze) and uveitis (miotic pupil, not dilated)."
+  }
+]

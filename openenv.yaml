@@ -1,0 +1,75 @@
+name: medtriage-rl
+version: "1.0.0"
+description: >
+  Medical emergency department triage simulation.
+  An AI agent acts as a triage nurse: observing patient
+  presentations, asking targeted clinical questions, and
+  assigning ESI urgency levels (1-5). Three difficulty tiers
+  test basic triage, ambiguous presentations, and deceptive
+  cases that superficially appear benign.
+
+tags:
+  - openenv
+  - healthcare
+  - medical
+  - triage
+  - reinforcement-learning
+
+tasks:
+  - id: task_1
+    name: "Single-symptom triage"
+    difficulty: easy
+    description: "Clear unambiguous presentations. Test basic ESI knowledge."
+    expected_score_range: [0.75, 0.90]
+
+  - id: task_2
+    name: "Ambiguous multi-symptom triage"
+    difficulty: medium
+    description: "Two-fork diagnoses. Agent must ask discriminating questions."
+    expected_score_range: [0.45, 0.65]
+
+  - id: task_3
+    name: "Deceptive presentation triage"
+    difficulty: hard
+    description: "Critical cases with benign-sounding complaints. Safety gate active."
+    expected_score_range: [0.20, 0.40]
+
+action_space:
+  type: discrete
+  actions:
+    - ASK_VITALS
+    - ASK_SYMPTOMS
+    - ASK_HISTORY
+    - ASK_PAIN
+    - ASK_DURATION
+    - ASK_CONTEXT
+    - REQUEST_IMAGE
+    - TRIAGE_1
+    - TRIAGE_2
+    - TRIAGE_3
+    - TRIAGE_4
+    - TRIAGE_5
+
+observation_space:
+  type: dict
+  fields:
+    chief_complaint: string
+    patient_meta: object
+    revealed_info: object
+    step: integer
+    max_steps: integer
+    image_available: boolean
+    task_id: string
+    done: boolean
+
+reward:
+  type: dense
+  range: [-2.0, 1.2]
+  terminal: grader_score_0_to_1
+  partial: step_level_signal
+
+endpoints:
+  reset: POST /reset
+  step: POST /step
+  state: GET /state
+  health: GET /health

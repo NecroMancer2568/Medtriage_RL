@@ -1,0 +1,240 @@
+[
+  {
+    "id": "hard_001",
+    "difficulty": "hard",
+    "chief_complaint": "I've been feeling really tired for a few days and my stomach's been a bit off. Probably just a stomach bug.",
+    "patient_meta": {
+      "age": 19,
+      "gender": "male"
+    },
+    "hidden_diagnosis": "Diabetic ketoacidosis (DKA) — undiagnosed Type 1 diabetes",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": [
+      "fruity breath",
+      "polyuria",
+      "polydipsia",
+      "weight loss",
+      "deep rapid breathing",
+      "confusion if late"
+    ],
+    "discriminating_questions": [
+      "ASK_CONTEXT",
+      "ASK_DURATION"
+    ],
+    "deceptive_element": "Chief complaint sounds like a stomach bug or viral illness. Patient downplays severity. Critical clues only emerge on targeted questioning.",
+    "answer_map": {
+      "ASK_VITALS": "HR 124 bpm, BP 96/64 mmHg, RR 30 breaths/min (deep, laboured Kussmaul breathing), SpO2 98%, Temp 37.3°C. Dry mucous membranes. Skin turgor reduced. Sweet/fruity odour on breath noted by nurse.",
+      "ASK_SYMPTOMS": "Urinating very frequently — up to 15 times yesterday. Drinking water constantly. Lost about 4kg in the last 2 weeks. Breath smells sweet — friends commented. Abdomen crampy. Feeling confused and foggy this morning.",
+      "ASK_HISTORY": "No diagnosed diabetes. No medications. No family history asked about. Has been losing weight for weeks — thought he was 'getting fitter'. No prior hospitalisations.",
+      "ASK_PAIN": "Diffuse abdominal cramping, 4/10. Headache. Generalised fatigue. Not specifically painful.",
+      "ASK_DURATION": "Gradually worsening over 5–7 days. Thought it would pass on its own.",
+      "ASK_CONTEXT": "College student. Skipped meals frequently this week. No alcohol. No drug use. No sick contacts with vomiting/diarrhoea.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "DECEPTIVE: Sounds like gastroenteritis. Red flags buried in ASK_SYMPTOMS (polyuria, polydipsia, weight loss, fruity breath) and ASK_VITALS (Kussmaul breathing, tachycardia, hypotension). Agent anchored on stomach bug will assign ESI 4/5 and fail safety gate. Must ask at least 2 of: ASK_SYMPTOMS, ASK_VITALS, ASK_HISTORY to find the DKA pattern."
+  },
+  {
+    "id": "hard_002",
+    "difficulty": "hard",
+    "chief_complaint": "I have a bit of a backache. Probably from lifting something heavy at work yesterday.",
+    "patient_meta": {
+      "age": 72,
+      "gender": "male"
+    },
+    "hidden_diagnosis": "Acute aortic dissection (Type A)",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": [
+      "tearing quality of pain",
+      "hypertensive history",
+      "pulse differential",
+      "BP differential between arms"
+    ],
+    "discriminating_questions": [
+      "ASK_PAIN",
+      "ASK_CONTEXT"
+    ],
+    "deceptive_element": "Patient attributes sudden-onset severe pain to muscular strain. Elderly, stoic, minimises symptoms. True character of pain only revealed if asked specifically.",
+    "answer_map": {
+      "ASK_VITALS": "HR 98 bpm. BP RIGHT arm: 168/94 mmHg. BP LEFT arm: 112/72 mmHg — 56mmHg differential. RR 22 breaths/min, SpO2 96%, Temp 37.1°C. Patient diaphoretic. Peripheral pulses asymmetric — left radial weaker than right.",
+      "ASK_SYMPTOMS": "The pain is unlike anything before — 'tearing' and 'ripping', not muscular. Felt it snap in the chest first then move to the back. Mild hoarseness. Feels slightly lightheaded.",
+      "ASK_HISTORY": "Longstanding hypertension, poorly controlled — not always taking ramipril and amlodipine. Known Marfan features — tall, long arms, previous lens dislocation. No prior cardiac history. Heavy smoker, ex-40 pack years.",
+      "ASK_PAIN": "At first he said 4/10 'back strain'. When asked specifically about quality: 'Actually it's more like a tearing or ripping pain — started in the chest and moved to the back. It was sudden and the worst thing I've ever felt, I just didn't want to worry anyone.' True severity: 10/10.",
+      "ASK_DURATION": "Sudden onset this morning at rest — not during lifting. He retrospectively misattributed it.",
+      "ASK_CONTEXT": "At rest when it started. Not lifting. Has been on-and-off chest discomfort for the morning. Wife noticed he looked pale.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "DECEPTIVE: Patient says back strain. True diagnosis: Type A aortic dissection. Red flags require specific probing — BP differential between arms (ASK_VITALS), tearing quality (ASK_PAIN specifically asks quality), Marfan history (ASK_HISTORY). Agent that accepts 'back strain' at face value will undertriage. Extremely high mortality if missed."
+  },
+  {
+    "id": "hard_003",
+    "difficulty": "hard",
+    "chief_complaint": "I feel a bit of chest tightness and I'm short of breath. But I think it's just my anxiety acting up.",
+    "patient_meta": {
+      "age": 44,
+      "gender": "female"
+    },
+    "hidden_diagnosis": "NSTEMI (Non-ST Elevation MI) — atypical female presentation",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": [
+      "diaphoresis",
+      "jaw pain",
+      "epigastric discomfort",
+      "female atypical MI presentation",
+      "risk factors"
+    ],
+    "discriminating_questions": [
+      "ASK_CONTEXT",
+      "ASK_DURATION"
+    ],
+    "deceptive_element": "Female patient with anxiety history. Atypical MI symptoms in women (fatigue, jaw discomfort, nausea) are frequently misattributed to anxiety or GORD. Patient herself attributes to anxiety.",
+    "answer_map": {
+      "ASK_VITALS": "HR 108 bpm, BP 158/96 mmHg, RR 24 breaths/min, SpO2 95%, Temp 36.9°C. Diaphoretic. Grey complexion. Skin clammy.",
+      "ASK_SYMPTOMS": "Chest tightness spreading to jaw and left shoulder. Unusual fatigue for 2 days. Feels nauseous. Jaw aching. Upper stomach burning — thought it was indigestion. Sweating despite cool room. Has felt 'a sense of doom' — can't explain it.",
+      "ASK_HISTORY": "Diabetic Type 2 on metformin — diabetes blunts cardiac pain sensation. Hypertensive. Smoker. Mother had heart attack at 55. Post-menopausal. High stress job. Multiple cardiac risk factors.",
+      "ASK_PAIN": "Chest tightness 5/10, not classic severe crushing like she's 'heard heart attacks feel like'. Jaw ache 3/10. But the sense of something being wrong is strong.",
+      "ASK_DURATION": "Fatigue and jaw ache for 2 days. Chest tightness for 3 hours, building gradually.",
+      "ASK_CONTEXT": "No exertion — was sitting at computer. No recent illness. High-stress week at work. Takes metformin and ramipril. History of anxiety disorder — on sertraline.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "DECEPTIVE: Anxiety history causes anchoring bias — patient's own diagnosis is anxiety. Atypical female MI presentation: jaw pain, fatigue, nausea, epigastric discomfort rather than classic crushing chest pain. Diabetic neuropathy blunts pain. Multiple risk factors emerge only on ASK_HISTORY. Vitals tell the real story. Agent must not accept 'anxiety' framing without probing."
+  },
+  {
+    "id": "hard_004",
+    "difficulty": "hard",
+    "chief_complaint": "I've had a headache and mild fever for a few days. I've been a bit confused today but I think I'm just tired.",
+    "patient_meta": {
+      "age": 67,
+      "gender": "female"
+    },
+    "hidden_diagnosis": "Bacterial meningitis",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": [
+      "new confusion",
+      "fever + headache + confusion triad",
+      "neck stiffness",
+      "elderly — classic triad often incomplete"
+    ],
+    "discriminating_questions": [
+      "ASK_PAIN",
+      "ASK_CONTEXT"
+    ],
+    "deceptive_element": "Elderly patient with vague presenting complaint. Family attributes confusion to tiredness. Classic meningitis triad (headache + fever + neck stiffness) is often ABSENT or incomplete in elderly patients — making diagnosis harder. Agent must specifically probe for meningism.",
+    "answer_map": {
+      "ASK_VITALS": "HR 110 bpm, BP 102/68 mmHg, RR 24 breaths/min, SpO2 95%, Temp 39.6°C. GCS 13/15 (confused). Photophobic. Unable to flex neck fully — stiff.",
+      "ASK_SYMPTOMS": "Headache progressively worsening for 3 days — now severe. Developed confusion and drowsiness today. Sensitive to light. Neck stiffness on examination — patient winces on attempted chin-to-chest. No rash visible. Vomited twice today.",
+      "ASK_HISTORY": "On immunosuppressant (prednisolone for rheumatoid arthritis) — high infection risk. No recent surgery. Not vaccinated against meningococcus or pneumococcus. Lives in a care home — institutional exposure risk.",
+      "ASK_PAIN": "Headache 8/10, worst of her life over the last 24 hours. She said 'I thought it would pass.' Photophobic.",
+      "ASK_DURATION": "Headache 3 days, worsening. Confusion new today — family says she 'hasn't been herself' since this morning.",
+      "ASK_CONTEXT": "Care home resident. Several residents had upper respiratory infections last week. On long-term steroids — may have blunted early fever response.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "DECEPTIVE: Elderly patient with 'headache and confusion — probably tired.' Family minimises. Steroid use blunts immune response, may present atypically. Neck stiffness only found on examination, not volunteered. Agent must specifically probe neurological symptoms and ask about neck stiffness, photophobia, and immunosuppression. GCS drop + fever + meningism = bacterial meningitis until proven otherwise."
+  },
+  {
+    "id": "hard_005",
+    "difficulty": "hard",
+    "chief_complaint": "My stomach has been off for a week and I'm feeling weak and dizzy. I've been a bit stressed at work.",
+    "patient_meta": {
+      "age": 35,
+      "gender": "male"
+    },
+    "hidden_diagnosis": "Acute Addisonian crisis (adrenal insufficiency) — undiagnosed",
+    "true_esi": 1,
+    "image_available": true,
+    "image_description": "Palmar creases and buccal mucosa: hyperpigmentation visible — palmar creases appear darkened and bronze-toned. Buccal mucosa shows patchy brownish pigmentation. Skin appears darkened in sun-exposed areas.",
+    "red_flags": [
+      "hyperpigmentation",
+      "hypotension",
+      "hyponatraemia symptoms",
+      "profound weakness",
+      "salt craving"
+    ],
+    "discriminating_questions": [
+      "REQUEST_IMAGE",
+      "ASK_CONTEXT"
+    ],
+    "deceptive_element": "Presents as stress and GI upset. The hyperpigmentation is the hidden physical sign that reveals Addison's disease. Only visible if the agent requests the image. Vitals show haemodynamic compromise — easily attributed to 'dehydration from stomach bug' without the clinical context.",
+    "answer_map": {
+      "ASK_VITALS": "HR 116 bpm, BP 84/54 mmHg supine — drops further on standing (orthostatic hypotension), RR 20 breaths/min, SpO2 97%, Temp 36.6°C. Profoundly weak — can barely sit up. Skin appears darkened.",
+      "ASK_SYMPTOMS": "Profound weakness and fatigue — can barely get out of bed. Nausea, vomiting, and abdominal cramping for a week. Dizzy on standing. Craving salt intensely — eating salt crackers constantly. Lost 5kg. Feels cold all the time despite normal temperature.",
+      "ASK_HISTORY": "No prior endocrine diagnosis. Has been on steroid creams (clobetasol) for skin condition for 2 years — possible HPA axis suppression. Recent stressful event — wife ill, has not slept properly for weeks. No other medications.",
+      "ASK_PAIN": "Diffuse abdominal cramping 4/10. Generalised body aches. No specific focal pain.",
+      "ASK_DURATION": "Symptoms 1 week, progressively worsening. Did not seek help earlier, attributed to stress.",
+      "ASK_CONTEXT": "Works long hours. Wife unwell at home. Not eating well. Using strong steroid cream on large body surface area for 2 years — may have caused iatrogenic adrenal suppression.",
+      "REQUEST_IMAGE": "Palmar creases: distinctly hyperpigmented, bronze-brown discolouration in the creases — a hallmark of primary adrenal insufficiency (Addison's disease). Buccal mucosa: patchy brownish pigmentation. Dorsum of hands and sun-exposed areas: diffuse bronze hyperpigmentation. This pattern of hyperpigmentation combined with haemodynamic collapse is diagnostic of an Addisonian crisis."
+    },
+    "grader_notes": "DECEPTIVE: Sounds like stress + stomach bug. The image is the critical unlock — hyperpigmentation in palmar creases and buccal mucosa is pathognomonic for primary adrenal insufficiency. Haemodynamic collapse on vitals appears to be dehydration but is adrenal crisis. Steroid cream history causing HPA suppression is a buried but crucial clue. Agent must REQUEST_IMAGE and/or ASK_VITALS plus connect to the systemic picture."
+  },
+  {
+    "id": "hard_006",
+    "difficulty": "hard",
+    "chief_complaint": "My heart's been racing a bit and I feel lightheaded. I had a lot of coffee this morning.",
+    "patient_meta": {
+      "age": 61,
+      "gender": "male"
+    },
+    "hidden_diagnosis": "Ventricular tachycardia (VT) with haemodynamic compromise",
+    "true_esi": 1,
+    "image_available": false,
+    "red_flags": [
+      "structural heart disease history",
+      "syncope or pre-syncope",
+      "haemodynamic compromise",
+      "palpitations + lightheadedness"
+    ],
+    "discriminating_questions": [
+      "ASK_CONTEXT",
+      "ASK_PAIN"
+    ],
+    "deceptive_element": "Patient attributes to caffeine. Palpitations are common and usually benign — agent may anchor on caffeine/SVT and miss VT. History of prior MI and the haemodynamic compromise are the critical distinguishing factors.",
+    "answer_map": {
+      "ASK_VITALS": "HR 178 bpm — rapid, regular, wide complex on rhythm check. BP 88/56 mmHg. RR 24 breaths/min. SpO2 93%. Temp 37.0°C. Patient grey, diaphoretic. Near syncope when attempting to stand.",
+      "ASK_SYMPTOMS": "Racing heart, very lightheaded, nearly fainted twice in the last hour. Chest discomfort. Vision going dark when he stands. Has never had palpitations like this before — 'this feels different to caffeine.'",
+      "ASK_HISTORY": "Previous anterior STEMI 3 years ago — has a scar on his left ventricle (known on echo). This makes VT the leading diagnosis over SVT. On aspirin and bisoprolol — bisoprolol was missed this morning. Known ejection fraction of 35% — poor cardiac function.",
+      "ASK_PAIN": "Chest discomfort 5/10. Lightheaded 8/10. Pre-syncopal — vision darkening.",
+      "ASK_DURATION": "Started 2 hours ago. Thought it was caffeine from 4 cups of coffee. Not improving.",
+      "ASK_CONTEXT": "Prior STEMI 3 years ago, on cardiac medications. Missed bisoprolol this morning. 4 cups of coffee — but this amount never caused this before.",
+      "REQUEST_IMAGE": null
+    },
+    "grader_notes": "DECEPTIVE: Patient attributes to coffee. Prior STEMI with known LV scar = VT substrate. Wide complex tachycardia at 178bpm + haemodynamic compromise = VT until proven otherwise — not SVT. Agent anchored on caffeine/anxiety will undertriage to ESI 3. ASK_HISTORY is the discriminator — prior MI makes this immediately high-risk."
+  },
+  {
+    "id": "hard_007",
+    "difficulty": "hard",
+    "chief_complaint": "I have mild pain and swelling in my right leg. Probably just muscle soreness from the gym.",
+    "patient_meta": {
+      "age": 28,
+      "gender": "female"
+    },
+    "hidden_diagnosis": "Phlegmasia cerulea dolens — massive DVT with impending venous gangrene",
+    "true_esi": 1,
+    "image_available": true,
+    "image_description": "Right leg from foot to mid-thigh: entire limb is massively swollen, tense, and blue-purple in colour (cyanotic). Skin appears shiny and taut. Blisters (bullae) beginning to form on the foot. Limb is cool to touch. No palpable distal pulses. Compared to left leg — marked asymmetry.",
+    "red_flags": [
+      "massive unilateral limb swelling",
+      "cyanosis",
+      "bullae formation",
+      "absent distal pulses",
+      "venous gangrene risk"
+    ],
+    "discriminating_questions": [
+      "REQUEST_IMAGE",
+      "ASK_CONTEXT"
+    ],
+    "deceptive_element": "Young woman. Attributes to gym soreness — common in this demographic. The image is instantly diagnostic — a massively swollen, cyanotic, blistering leg is not muscle soreness. Agent that relies only on the verbal history will completely miss this.",
+    "answer_map": {
+      "ASK_VITALS": "HR 128 bpm, BP 96/60 mmHg, RR 22 breaths/min, SpO2 94%, Temp 37.6°C. Patient in significant distress. Right leg is noticeably larger and darker than left even on visual inspection.",
+      "ASK_SYMPTOMS": "Right leg swelling started yesterday — rapidly worsening today. The leg has gone bluish and feels very tight. Foot feels cold and numb. Cannot move toes properly. Extreme pain — much worse than any muscle soreness she's had before.",
+      "ASK_HISTORY": "On combined oral contraceptive pill for 3 years — major DVT risk factor. Recently took a 12-hour bus journey 5 days ago. Family history of clotting disorder — sister had a DVT at 26.",
+      "ASK_PAIN": "8/10 — severe, constant, the whole leg. Not typical DOMS which is generalised and both sides. This is localised, one-sided, and much more severe.",
+      "ASK_DURATION": "Pain since yesterday. Swelling dramatically worsened today over a few hours. Colour change noticed this morning.",
+      "ASK_CONTEXT": "OCP user. Long bus journey last week. Family clotting history. Went to the gym two days ago — she retrospectively attributed it to that.",
+      "REQUEST_IMAGE": "Right lower extremity: massive swelling of entire leg from foot to thigh, cyanotic blue-purple discolouration throughout, shiny taut skin, early bullae (blisters) forming on dorsum of foot. No palpable dorsalis pedis or posterior tibial pulses bilaterally on right side. Left leg completely normal. This is phlegmasia cerulea dolens — a vascular emergency with risk of venous gangrene and limb loss within hours without immediate intervention."
+    },
+    "grader_notes": "DECEPTIVE: Young woman attributes to gym soreness — extremely common presentation that gets dismissed. The image is unambiguous — a massive cyanotic blistering leg is limb-threatening. OCP + long journey + family history = provoked massive DVT. Agent must REQUEST_IMAGE to see the severity. Without the image, verbal history alone may lead to ESI 3 or 4 — catastrophic miss."
+  }
+]
