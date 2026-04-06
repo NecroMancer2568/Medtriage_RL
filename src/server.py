@@ -2,9 +2,9 @@
 server.py — FastAPI server for MedTriage-RL environment.
 Thin wrapper around TriageEnv. All logic lives in env.py, graders.py, reward.py.
 """
-
+import gradio as gr
 from fastapi import FastAPI, HTTPException, Query
-
+from src.ui import demo
 from src.env import TriageAction, TriageEnv, TriageObservation, StepResult
 
 
@@ -76,7 +76,7 @@ def step(
     except RuntimeError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-
+app = gr.mount_gradio_app(app, demo, path="/ui")
 @app.get("/state", response_model=TriageObservation)
 def state(task_id: str = Query(default="task_1", description="Task ID: task_1, task_2, or task_3")):
     """
