@@ -6,7 +6,7 @@ import gradio as gr
 from fastapi import FastAPI, HTTPException, Query
 from ui.app import demo
 from src.env import TriageAction, TriageEnv, TriageObservation, StepResult
-
+from fastapi.responses import RedirectResponse
 
 app = FastAPI(
     title="MedTriage-RL",
@@ -76,7 +76,7 @@ def step(
     except RuntimeError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-app = gr.mount_gradio_app(app, demo, path="/ui")
+app = gr.mount_gradio_app(app, demo, path="/")
 @app.get("/state", response_model=TriageObservation)
 def state(task_id: str = Query(default="task_1", description="Task ID: task_1, task_2, or task_3")):
     """
