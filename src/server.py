@@ -4,7 +4,7 @@ Thin wrapper around TriageEnv. All logic lives in env.py, graders.py, reward.py.
 """
 import gradio as gr
 from fastapi import FastAPI, HTTPException, Query
-from src.ui import demo
+from ui import demo
 from src.env import TriageAction, TriageEnv, TriageObservation, StepResult
 
 
