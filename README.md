@@ -1,3 +1,14 @@
+---
+title: MedTriage RL
+emoji: 🏥
+colorFrom: red
+colorTo: blue
+sdk: docker
+pinned: false
+---
+
+# MedTriage-RL
+Emergency Department Triage Reinforcement Learning Environment.
 # MedTriage-RL
 
 An OpenEnv-compatible reinforcement learning environment simulating 
