@@ -73,3 +73,4 @@ endpoints:
   step: POST /step
   state: GET /state
   health: GET /health
+  ui: GET https://mayank200062006-medtriage-openenv.hf.space:7861

@@ -14,7 +14,7 @@ hf_token=os.getenv("HF_TOKEN")
 API_BASE_URL = os.environ.get("API_BASE_URL", "https://integrate.api.nvidia.com/v1")
 MODEL_NAME   = os.environ.get("MODEL_NAME",   "nvidia/nemotron-3-super-120b-a12b")
 HF_TOKEN     = os.environ.get("HF_TOKEN",     hf_token)
-ENV_URL      = os.environ.get("ENV_URL",      "http://localhost:7860")
+ENV_URL      = os.environ.get("ENV_URL",      "https://mayank200062006-medtriage-openenv.hf.space")
 
 client = OpenAI(api_key=HF_TOKEN, base_url=API_BASE_URL) if HF_TOKEN else None
 
