@@ -6,7 +6,7 @@ colorTo: blue
 sdk: docker
 pinned: false
 ---
-
+## Note* A gradio UI is also available for this environment. You can access it at [https://mayank200062006-medtriage-openenv.hf.space/ui/]
 # MedTriage-RL
 Emergency Department Triage Reinforcement Learning Environment.
 # MedTriage-RL
