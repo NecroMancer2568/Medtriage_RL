@@ -4,7 +4,6 @@ import sys
 import json
 import requests
 from typing import Optional, List
-from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,8 +14,6 @@ API_BASE_URL = os.environ.get("API_BASE_URL", "https://integrate.api.nvidia.com/
 MODEL_NAME   = os.environ.get("MODEL_NAME",   "nvidia/nemotron-3-super-120b-a12b")
 HF_TOKEN     = os.environ.get("HF_TOKEN",     hf_token)
 ENV_URL      = os.environ.get("ENV_URL",      "https://mayank200062006-medtriage-openenv.hf.space")
-
-client = OpenAI(api_key=HF_TOKEN, base_url=API_BASE_URL) if HF_TOKEN else None
 
 # ── Valid actions ────────────────────────────────────────────────────────────
 VALID_ACTIONS = {
@@ -137,7 +134,8 @@ def get_heuristic_action(observation: dict) -> str:
 HAS_WARNED_FALLBACK=False
 # ── LLM action selector ──────────────────────────────────────────────────────
 def get_llm_action(observation: dict, history: List[str] = None) -> str:
-    if client is None:
+    global HAS_WARNED_FALLBACK
+    if not HF_TOKEN:
         if not HAS_WARNED_FALLBACK:
             print("\n[WARNING] HF_TOKEN not found. Switching to HEURISTIC Model.",file=sys.stderr)
             HAS_WARNED_FALLBACK=True
@@ -149,17 +147,25 @@ def get_llm_action(observation: dict, history: List[str] = None) -> str:
         obs_text += "\nDo not repeat these."
 
     try:
-        response = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=[
+        base_api = API_BASE_URL.rstrip('/')
+        url = f"{base_api}/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {HF_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": MODEL_NAME,
+            "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user",   "content": obs_text},
             ],
-            max_tokens=512,
-            temperature=0.0,
-        )
-
-        raw = response.choices[0].message.content.strip().upper()
+            "max_tokens": 512,
+            "temperature": 0.0,
+        }
+        
+        resp = requests.post(url, headers=headers, json=payload, timeout=30)
+        resp.raise_for_status()
+        raw = resp.json()["choices"][0]["message"]["content"].strip().upper()
 
         # Layer 1: exact match
         if raw in VALID_ACTIONS:
@@ -177,7 +183,7 @@ def get_llm_action(observation: dict, history: List[str] = None) -> str:
         # Layer 3: heuristic fallback
         return get_heuristic_action(observation)
 
-    except Exception:
+    except Exception as e:
         if not HAS_WARNED_FALLBACK:
             print(f"\n[WARNING] API Error: {e}. Switching to HEURISTIC model.", file=sys.stderr)
             HAS_WARNED_FALLBACK=True
