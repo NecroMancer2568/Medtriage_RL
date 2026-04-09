@@ -265,13 +265,14 @@ def run_episode(task_id: str, env_url: str) -> dict:
             )
 
     except Exception as e:
-        score = 0.0001
+        score = 0.001
         success = False
         print(f"[DEBUG] Exception in run_episode: {e}", file=sys.stderr)
 
     finally:
-        # Hackathon validator strictly requires score in (0, 1) exclusive
-        score = max(0.0001, min(0.9999, score))
+        # Hackathon validator strictly requires score in (0, 1) exclusive.
+        # We use 0.001 and 0.999 so that rounding to .3f doesn't produce 0.000 or 1.000.
+        score = max(0.001, min(0.999, score))
         log_end(
             success=success,
             steps=steps_taken,
