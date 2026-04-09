@@ -241,7 +241,7 @@ class TriageEnv:
                     total=-2.0,
                     components={"timeout": -2.0},
                     is_terminal=True,
-                    grader_score=0.0,
+                    grader_score=0.001,
                     explanation="Max steps reached without triage decision."
                 )
             else:
