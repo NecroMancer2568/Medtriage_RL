@@ -52,7 +52,7 @@ class Task1Grader(BaseGrader):
         elif esi_diff == 1:
             accuracy = 0.5
         else:
-            return 0.0  # wrong by 2+, efficiency is irrelevant
+            return 0.001  # wrong by 2+, efficiency is irrelevant
 
         # Step 2: reasoning check — did agent ask anything clinically relevant?
         # An agent that never asked a discriminating question showed no reasoning.
@@ -63,7 +63,7 @@ class Task1Grader(BaseGrader):
         if not asked_something_relevant:
             # Correct answer but zero clinical reasoning demonstrated.
             # Cap hard at 0.4 to punish lucky guesses.
-            return round(accuracy * 0.4, 4)
+            return max(0.001, min(0.999, round(accuracy * 0.4, 4)))
 
         # Step 3: efficiency bonus — only applies when reasoning was shown
         ask_count = sum(
@@ -77,7 +77,7 @@ class Task1Grader(BaseGrader):
         else:
             efficiency = 0.7
 
-        return round(accuracy * efficiency, 4)
+        return max(0.001, min(0.999, round(accuracy * efficiency, 4)))
 
 class Task2Grader(BaseGrader):
     """
@@ -129,7 +129,7 @@ class Task2Grader(BaseGrader):
             red_flag_penalty = 0.3
 
         score = (accuracy * relevance) - redundancy_penalty - red_flag_penalty
-        return round(max(0.0, min(1.0, score)), 4)
+        return max(0.001, min(0.999, round(score, 4)))
 
 
 class Task3Grader(BaseGrader):
@@ -145,7 +145,7 @@ class Task3Grader(BaseGrader):
         # SAFETY GATE — hard zero for critical undertriage
         # All hard cases are ESI 1 — assigning ESI 3 or 4 or 5 = dangerous miss
         if true_esi <= 2 and assigned_esi >= 3:
-            return 0.0  # safety gate: catastrophic undertriage
+            return 0.001  # safety gate: catastrophic undertriage
         
         # Step 1: accuracy
         esi_diff = abs(assigned_esi - true_esi)
@@ -169,7 +169,7 @@ class Task3Grader(BaseGrader):
             return round(0.3, 4)
         
         score = accuracy + depth_bonus
-        return round(max(0.0, min(1.0, score)), 4)
+        return max(0.001, min(0.999, round(score, 4)))
 
 
 def get_grader(task_id: Literal["task_1", "task_2", "task_3"]) -> BaseGrader:
